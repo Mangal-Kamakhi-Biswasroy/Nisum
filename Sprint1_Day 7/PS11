@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card</title>
+    <style>
+        .product-card {
+            width: 300px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 16px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+        
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 0 0 16px 0;
+        }
+        
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .buy-button:hover {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="https://via.placeholder.com/300x200" alt="Product Image" class="product-image">
+        <div class="product-info">
+            <h2 class="product-title">Premium Wireless Headphones</h2>
+            <p class="product-description">
+                Experience crystal-clear sound with our noise-cancelling wireless headphones. 
+                Features 30-hour battery life and comfortable over-ear design.
+            </p>
+            <p class="product-price">$149.99</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+    </div>
+</body>
+</html>
