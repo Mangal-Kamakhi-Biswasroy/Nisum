@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding declaration -->
+    <meta charset="UTF-8">
+    
+    <!-- Viewport settings for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Document title that appears in browser tab -->
+    <title>My Single Page Application</title>
+    
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- External CSS stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Preconnect to external resources (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts (optional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Additional meta tags (optional) -->
+    <meta name="description" content="A simple Single Page Application demonstrating core SPA concepts">
+    <meta name="keywords" content="SPA, JavaScript, HTML, CSS">
+    <meta name="author" content="Your Name">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    
+    <!-- Semantic header with navigation -->
+    <header class="main-header">
+        <nav aria-label="Main navigation">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content area with semantic tag and ARIA landmark -->
+    <main id="main-content" class="content-wrapper">
+        <!-- Content will be dynamically loaded here by JavaScript -->
+    </main>
+
+    <!-- Semantic footer -->
+    <footer class="main-footer">
+        <p>&copy; 2023 My SPA Project. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript files at the end of body for better performance -->
+    <script src="js/app.js" defer></script>
+</body>
+</html>
