@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-container input {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            width: 200px;
+        }
+        
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        /* Current Weather Section */
+        .current-weather {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .location-date {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .weather-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .temperature {
+            display: flex;
+            align-items: center;
+        }
+        
+        .temp-value {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        
+        .temp-unit {
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            color: #666;
+        }
+        
+        .weather-icon {
+            font-size: 5rem;
+            color: #ffa500;
+            margin-right: 2rem;
+        }
+        
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .weather-description {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .additional-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .info-card {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .info-card i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4a90e2;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        .info-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Forecast Section */
+        .forecast {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .forecast-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .forecast-card {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .forecast-day {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .forecast-icon {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            color: #4a90e2;
+        }
+        
+        .forecast-temp {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .max-temp {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .min-temp {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">WeatherApp</div>
+        <div class="search-container">
+            <input type="text" placeholder="Search location...">
+            <i class="fas fa-search" style="margin-left: -30px; color: #666;"></i>
+        </div>
+    </header>
+    
+    <main>
+        <section class="current-weather">
+            <div class="location-date">
+                <h1 class="location">Bhubaneswar, Odisha, India</h1>
+                <p class="date">Tuesday, May 20, 2025</p>
+            </div>
+            
+            <div class="weather-details">
+                <div class="temperature">
+                    <i class="fas fa-sun weather-icon"></i>
+                    <div>
+                        <span class="temp-value">42</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                </div>
+                
+                <div class="weather-info">
+                    <p class="weather-description">Sunny</p>
+                    <p>Feels like 54°C</p>
+                    <p>Humidity: 45%</p>
+                </div>
+            </div>
+            
+            <div class="additional-info">
+                <div class="info-card">
+                    <i class="fas fa-wind"></i>
+                    <span class="info-label">Wind</span>
+                    <span class="info-value">11 mph</span>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-tint"></i>
+                    <span class="info-label">Precipitation</span>
+                    <span class="info-value">0%</span>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-arrow-up"></i>
+                    <span class="info-label">Pressure</span>
+                    <span class="info-value">1012 hPa</span>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-eye"></i>
+                    <span class="info-label">Visibility</span>
+                    <span class="info-value">10 mi</span>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-sun"></i>
+                    <span class="info-label">UV Index</span>
+                    <span class="info-value">11</span>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-cloud"></i>
+                    <span class="info-label">Cloud Cover</span>
+                    <span class="info-value">10%</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="forecast">
+            <h2 class="section-title">5-Day Forecast</h2>
+            <div class="forecast-cards">
+                <div class="forecast-card">
+                    <p class="forecast-day">Tue</p>
+                    <i class="fas fa-sun forecast-icon"></i>
+                    <div class="forecast-temp">
+                        <span class="max-temp">43°</span>
+                        <span class="min-temp">32°</span>
+                    </div>
+                </div>
+                <div class="forecast-card">
+                    <p class="forecast-day">Wed</p>
+                    <i class="fas fa-sun forecast-icon"></i>
+                    <div class="forecast-temp">
+                        <span class="max-temp">42°</span>
+                        <span class="min-temp">30°</span>
+                    </div>
+                </div>
+                <div class="forecast-card">
+                    <p class="forecast-day">Thu</p>
+                    <i class="fas fa-cloud-sun forecast-icon"></i>
+                    <div class="forecast-temp">
+                        <span class="max-temp">38°</span>
+                        <span class="min-temp">27°</span>
+                    </div>
+                </div>
+                <div class="forecast-card">
+                    <p class="forecast-day">Fri</p>
+                    <i class="fas fa-cloud forecast-icon"></i>
+                    <div class="forecast-temp">
+                        <span class="max-temp">38°</span>
+                        <span class="min-temp">29°</span>
+                    </div>
+                </div>
+                <div class="forecast-card">
+                    <p class="forecast-day">Sat</p>
+                    <i class="fas fa-cloud-rain forecast-icon"></i>
+                    <div class="forecast-temp">
+                        <span class="max-temp">36°</span>
+                        <span class="min-temp">27°</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
