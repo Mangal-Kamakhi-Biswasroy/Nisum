@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio showcasing web development and design work">
+    <title>Mangal Kamakhi Biswasroy | Web Developer & Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">Mangal Kamakhi Biswasroy</h1>
+            <p class="site-subtitle">Web Developer & UI Designer</p>
+        </div>
+        
+        <nav class="primary-navigation" aria-label="Primary navigation">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="page active-page" aria-labelledby="home-heading">
+            <header class="section-header">
+                <h1 id="home-heading">Welcome to My Digital Portfolio</h1>
+                <p class="section-intro">Creating meaningful digital experiences through thoughtful design and clean code</p>
+            </header>
+            
+            <article class="hero">
+                <figure class="hero-image-container">
+                    <img src="assets/hero-image.jpg" alt="Modern workspace with computer and design materials" class="hero-image">
+                    <figcaption>My creative workspace where ideas come to life</figcaption>
+                </figure>
+                
+                <section class="cta-section">
+                    <h2>Ready to start your project?</h2>
+                    <a href="#contact" class="cta-button">Get in Touch</a>
+                </section>
+            </article>
+            
+            <section class="featured-work" aria-labelledby="featured-work-heading">
+                <h2 id="featured-work-heading">Featured Projects</h2>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <header>
+                            <h3>E-commerce Platform</h3>
+                            <p class="project-category">Web Development</p>
+                        </header>
+                        <figure>
+                            <img src="assets/project1.jpg" alt="Screenshot of e-commerce website">
+                            <figcaption>Custom shopping cart implementation</figcaption>
+                        </figure>
+                        <a href="#portfolio" class="project-link">View Case Study</a>
+                    </article>
+                    
+                    <article class="project-card">
+                        <header>
+                            <h3>Fitness Mobile App</h3>
+                            <p class="project-category">Mobile Development</p>
+                        </header>
+                        <figure>
+                            <img src="assets/project2.jpg" alt="Screenshot of fitness app">
+                            <figcaption>Workout tracking interface</figcaption>
+                        </figure>
+                        <a href="#portfolio" class="project-link">View Case Study</a>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page" aria-labelledby="about-heading">
+            <header class="section-header">
+                <h1 id="about-heading">About Me</h1>
+                <p class="section-intro">My journey in web development and design</p>
+            </header>
+            
+            <article class="about-content">
+                <figure class="profile-container">
+                    <img src="assets/profile.jpg" alt="Professional headshot of Mangal Kamakhi Biswasroy" class="profile-image">
+                    <figcaption>Mangal Kamakhi Biswasroy, Web Developer</figcaption>
+                </figure>
+                
+                <section class="bio" aria-labelledby="bio-heading">
+                    <h2 id="bio-heading">Professional Background</h2>
+                    <p>With over 5 years of experience in the tech industry, I specialize in creating responsive, accessible web applications with intuitive user interfaces.</p>
+                    
+                    <section class="skills" aria-labelledby="skills-heading">
+                        <h3 id="skills-heading">Core Skills</h3>
+                        <ul class="skills-list">
+                            <li>HTML5 & Semantic Web</li>
+                            <li>CSS3 & Sass</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>React & Vue.js</li>
+                            <li>Node.js & Express</li>
+                            <li>UI/UX Design Principles</li>
+                        </ul>
+                    </section>
+                </section>
+            </article>
+            
+            <section class="experience" aria-labelledby="experience-heading">
+                <h2 id="experience-heading">Work Experience</h2>
+                <ol class="timeline">
+                    <li>
+                        <article class="timeline-item">
+                            <header>
+                                <h3>Senior Web Developer</h3>
+                                <p class="company">Digital Solutions Inc.</p>
+                                <time datetime="2020-01">2020</time> - Present
+                            </header>
+                            <p>Lead developer responsible for architecting enterprise web applications and mentoring junior team members.</p>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="timeline-item">
+                            <header>
+                                <h3>Web Developer</h3>
+                                <p class="company">Creative Agency</p>
+                                <time datetime="2018-06">2018</time> - <time datetime="2020-01">2020</time>
+                            </header>
+                            <p>Developed custom WordPress themes and plugins for diverse client projects.</p>
+                        </article>
+                    </li>
+                </ol>
+            </section>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="page" aria-labelledby="services-heading">
+            <header class="section-header">
+                <h1 id="services-heading">My Services</h1>
+                <p class="section-intro">Comprehensive digital solutions tailored to your needs</p>
+            </header>
+            
+            <div class="services-grid">
+                <article class="service-card" aria-labelledby="webdev-heading">
+                    <header>
+                        <h2 id="webdev-heading">Web Development</h2>
+                        <p class="service-subtitle">From concept to deployment</p>
+                    </header>
+                    <ul>
+                        <li>Custom website development</li>
+                        <li>Single Page Applications</li>
+                        <li>E-commerce solutions</li>
+                        <li>API integration</li>
+                    </ul>
+                    <footer class="service-footer">
+                        <a href="#contact" class="service-link">Request Quote</a>
+                    </footer>
+                </article>
+                
+                <article class="service-card" aria-labelledby="design-heading">
+                    <header>
+                        <h2 id="design-heading">UI/UX Design</h2>
+                        <p class="service-subtitle">User-centered interfaces</p>
+                    </header>
+                    <ul>
+                        <li>Wireframing & prototyping</li>
+                        <li>User research & testing</li>
+                        <li>Interaction design</li>
+                        <li>Design systems</li>
+                    </ul>
+                    <footer class="service-footer">
+                        <a href="#contact" class="service-link">Request Quote</a>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page" aria-labelledby="contact-heading">
+            <header class="section-header">
+                <h1 id="contact-heading">Contact Me</h1>
+                <p class="section-intro">Let's discuss your project ideas</p>
+            </header>
+            
+            <div class="contact-container">
+                <article class="contact-info" aria-labelledby="contact-info-heading">
+                    <h2 id="contact-info-heading">Contact Information</h2>
+                    <address>
+                        <p><i class="icon email" aria-hidden="true"></i> <a href="mailto:hello@example.com">hello@example.com</a></p>
+                        <p><i class="icon phone" aria-hidden="true"></i> <a href="tel:+1234567890">123-456-7890</a></p>
+                        <p><i class="icon location" aria-hidden="true"></i> KIIT University, Bhubaneswar</p>
+                    </address>
+                    
+                    <section class="social-links" aria-labelledby="social-heading">
+                        <h3 id="social-heading">Connect With Me</h3>
+                        <ul>
+                            <li><a href="#" aria-label="Twitter profile"><i class="icon twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#" aria-label="LinkedIn profile"><i class="icon linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#" aria-label="GitHub profile"><i class="icon github" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </section>
+                </article>
+                
+                <article class="contact-form-container" aria-labelledby="form-heading">
+                    <h2 id="form-heading">Send a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <fieldset>
+                            <legend class="visually-hidden">Contact details</legend>
+                            
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </fieldset>
+                    </form>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <section class="footer-about" aria-labelledby="footer-about-heading">
+                <h2 id="footer-about-heading" class="visually-hidden">About this website</h2>
+                <p>© <time datetime="2023">2023</time> Mangal Kamakhi Biswasroy. All rights reserved.</p>
+                <p>Built with semantic HTML, accessible CSS, and vanilla JavaScript.</p>
+            </section>
+            
+            <nav class="footer-navigation" aria-label="Footer navigation">
+                <h2 class="visually-hidden">Footer links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#sitemap">Sitemap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
