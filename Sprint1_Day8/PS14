@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light/Dark Mode Toggle</title>
+    <style>
+        /* Light mode (default) */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --button-bg: #333333;
+            --button-text: #ffffff;
+        }
+
+        /* Dark mode */
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --button-bg: #f5f5f5;
+            --button-text: #333333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .toggle-btn {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .content {
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Light/Dark Mode Toggle</h1>
+        <button class="toggle-btn" id="modeToggle">Toggle Dark Mode</button>
+        
+        <div class="content">
+            <p>This is some example content that will change color when you toggle between light and dark modes.</p>
+            <p>Click the button above to switch between color schemes.</p>
+        </div>
+    </div>
+
+    <script>
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+
+        // Check for saved user preference or use system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+
+        // Set initial theme
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            body.classList.add('dark-mode');
+            modeToggle.textContent = 'Toggle Light Mode';
+        }
+
+        // Toggle function
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Update button text
+            const isDarkMode = body.classList.contains('dark-mode');
+            modeToggle.textContent = isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+            
+            // Save user preference
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
