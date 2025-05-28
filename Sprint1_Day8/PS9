@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List with Local Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #taskInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #addBtn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #addBtn:hover {
+            background-color: #45a049;
+        }
+        #taskList {
+            list-style-type: none;
+            padding: 0;
+        }
+        .taskItem {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .taskText {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .deleteBtn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .deleteBtn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div>
+        <input type="text" id="taskInput" placeholder="Enter a new task...">
+        <button id="addBtn">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('taskInput');
+            const addBtn = document.getElementById('addBtn');
+            const taskList = document.getElementById('taskList');
+
+            // Load tasks from localStorage
+            loadTasks();
+
+            // Add task event listener
+            addBtn.addEventListener('click', addTask);
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                if (taskText) {
+                    // Create new task object
+                    const newTask = {
+                        id: Date.now(),
+                        text: taskText,
+                        completed: false
+                    };
+
+                    // Add to UI
+                    renderTask(newTask);
+
+                    // Add to localStorage
+                    const tasks = getTasks();
+                    tasks.push(newTask);
+                    saveTasks(tasks);
+
+                    // Clear input
+                    taskInput.value = '';
+                }
+            }
+
+            function renderTask(task) {
+                const li = document.createElement('li');
+                li.className = 'taskItem';
+                li.dataset.id = task.id;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = task.completed;
+                checkbox.addEventListener('change', toggleTask);
+
+                const span = document.createElement('span');
+                span.className = 'taskText';
+                span.textContent = task.text;
+                if (task.completed) {
+                    span.classList.add('completed');
+                }
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'deleteBtn';
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.addEventListener('click', deleteTask);
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+
+                taskList.appendChild(li);
+            }
+
+            function toggleTask(e) {
+                const taskId = parseInt(e.target.parentElement.dataset.id);
+                const tasks = getTasks();
+                const task = tasks.find(t => t.id === taskId);
+                
+                if (task) {
+                    task.completed = e.target.checked;
+                    saveTasks(tasks);
+                    e.target.nextElementSibling.classList.toggle('completed');
+                }
+            }
+
+            function deleteTask(e) {
+                const taskId = parseInt(e.target.parentElement.dataset.id);
+                let tasks = getTasks();
+                tasks = tasks.filter(t => t.id !== taskId);
+                saveTasks(tasks);
+                e.target.parentElement.remove();
+            }
+
+            function loadTasks() {
+                const tasks = getTasks();
+                tasks.forEach(task => renderTask(task));
+            }
+
+            function getTasks() {
+                const tasksJSON = localStorage.getItem('tasks');
+                return tasksJSON ? JSON.parse(tasksJSON) : [];
+            }
+
+            function saveTasks(tasks) {
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            }
+        });
+    </script>
+</body>
+</html>
