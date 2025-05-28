@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filter Users by City</title>
+</head>
+<body>
+
+  <h2>Filter Users by City</h2>
+
+  <label for="cityDropdown">Select a City:</label>
+  <select id="cityDropdown">
+    <option value="">-- All Cities --</option>
+  </select>
+
+  <ul id="userList">Loading users...</ul>
+
+  <script>
+    let allUsers = [];
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(users => {
+        allUsers = users;
+
+        const cities = [...new Set(users.map(user => user.address.city))];
+        const dropdown = document.getElementById("cityDropdown");
+        const userList = document.getElementById("userList");
+
+        cities.forEach(city => {
+          const option = document.createElement("option");
+          option.value = city;
+          option.textContent = city;
+          dropdown.appendChild(option);
+        });
+        renderUsers(users);
+        dropdown.addEventListener("change", () => {
+          const selectedCity = dropdown.value;
+          const filteredUsers = selectedCity
+            ? allUsers.filter(user => user.address.city === selectedCity)
+            : allUsers;
+          renderUsers(filteredUsers);
+        });
+      })
+      .catch(error => {
+        document.getElementById("userList").innerText = "Failed to load users.";
+        console.error("Fetch error:", error);
+      });
+
+    function renderUsers(users) {
+      const userList = document.getElementById("userList");
+      userList.innerHTML = ""; 
+
+      users.forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = `${user.name} (${user.email}) - ${user.address.city}`;
+        userList.appendChild(li);
+      });
+
+      if (users.length === 0) {
+        userList.innerHTML = "<li>No users found for selected city.</li>";
+      }
+    }
+  </script>
+
+</body>
+</html>
