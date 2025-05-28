@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API with Error Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+        }
+        .error {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .success {
+            color: #4CAF50;
+        }
+        .api-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Public APIs List</h1>
+    <button id="fetchBtn">Fetch Public APIs</button>
+    <div id="results">Click the button to fetch API data</div>
+
+    <script>
+        document.getElementById('fetchBtn').addEventListener('click', fetchData);
+
+        async function fetchData() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>Loading data...</p>';
+            
+            try {
+                // Make the API request
+                const response = await fetch('https://api.publicapis.org/entries');
+                
+                // Check if the response is OK (status 200-299)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // Parse the JSON data
+                const data = await response.json();
+                
+                // Display the results
+                displayResults(data.entries);
+                
+            } catch (error) {
+                // Handle any errors that occurred during the fetch
+                resultsDiv.innerHTML = `
+                    <p class="error">Error fetching data: ${error.message}</p>
+                    <p>Please try again later or check your network connection.</p>
+                `;
+                console.error('Fetch error:', error);
+            }
+        }
+
+        function displayResults(entries) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (!entries || entries.length === 0) {
+                resultsDiv.innerHTML = '<p class="error">No API entries found</p>';
+                return;
+            }
+            
+            // Limit to first 10 entries for display
+            const limitedEntries = entries.slice(0, 10);
+            
+            let html = `
+                <p class="success">Successfully fetched ${entries.length} APIs (showing 10)</p>
+                <div id="apiList">
+            `;
+            
+            limitedEntries.forEach(entry => {
+                html += `
+                    <div class="api-item">
+                        <h3>${entry.API}</h3>
+                        <p><strong>Description:</strong> ${entry.Description}</p>
+                        <p><strong>Category:</strong> ${entry.Category}</p>
+                        <p><strong>Link:</strong> <a href="${entry.Link}" target="_blank">${entry.Link}</a></p>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
