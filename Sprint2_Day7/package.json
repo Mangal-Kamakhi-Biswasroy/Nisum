@@ -1,0 +1,11 @@
+{
+  "name": "typescript-todo-app",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
